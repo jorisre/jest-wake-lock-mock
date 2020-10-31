@@ -1,6 +1,6 @@
 name: CI
 
-on:
+'on':
   push:
     branches:
       - main
@@ -8,52 +8,54 @@ on:
 
 jobs:
   build:
-    name: Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}
-
-    runs-on: ${{ matrix.os }}
+    name: 'Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}'
+    runs-on: '${{ matrix.os }}'
     strategy:
       matrix:
-        node: ['10.x', '12.x', '14.x']
-        os: [ubuntu-latest, windows-latest, macOS-latest]
-
+        node:
+          - 10.x
+          - 12.x
+          - 14.x
+        os:
+          - ubuntu-latest
+          - windows-latest
+          - macOS-latest
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-
-      - name: Use Node ${{ matrix.node }}
+      - name: 'Use Node ${{ matrix.node }}'
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
-
+          node-version: '${{ matrix.node }}'
       - name: Install deps and build (with cache)
         uses: bahmutov/npm-install@v1
-
       - name: Lint
         run: yarn lint
-
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
-
       - name: Build
         run: yarn build
-
   publish-module:
-    name: 'Publish Module to NPM'
+    name: Publish Module to NPM
     needs: build
-    if: github.repository == 'jorisre/jest-wake-lock-mock' && (github.ref == 'refs/heads/main')
-    runs-on: ${{ matrix.os }}
+    if: >-
+      github.repository == 'jorisre/jest-wake-lock-mock' && (github.ref ==
+      'refs/heads/main')
+    runs-on: '${{ matrix.os }}'
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
-     - name: Use Node ${{ matrix.node }}
+      - name: 'Use Node ${{ matrix.node }}'
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node }}
-          registry-url: https://registry.npmjs.org/
+          node-version: '${{ matrix.node }}'
+          registry-url: 'https://registry.npmjs.org/'
       - name: Install dependencies
         uses: bahmutov/npm-install@v1
-      - run: yarn build
-      - run: npx semantic-release
+      - name: Build
+        run: yarn build
+      - name: Publish
+        run: npx semantic-release
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-          GH_TOKEN: ${{secrets.GH_TOKEN}}
+          NODE_AUTH_TOKEN: '${{secrets.NPM_TOKEN}}'
+          GH_TOKEN: '${{secrets.GH_TOKEN}}'
