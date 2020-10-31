@@ -8,7 +8,7 @@ name: CI
 
 jobs:
   build:
-    name: 'Build, lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}'
+    name: 'Lint, and test on Node ${{ matrix.node }} and ${{ matrix.os }}'
     runs-on: '${{ matrix.os }}'
     strategy:
       matrix:
@@ -33,8 +33,6 @@ jobs:
         run: yarn lint
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
-      - name: Build
-        run: yarn build
   publish-module:
     name: 'Publish Module to NPM on Node ${{ matrix.node }} and ${{ matrix.os }}'
     needs: build
