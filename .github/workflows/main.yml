@@ -36,7 +36,7 @@ jobs:
       - name: Build
         run: yarn build
   publish-module:
-    name: Publish Module to NPM on Node ${{ matrix.node }} and ${{ matrix.os }}'
+    name: 'Publish Module to NPM on Node ${{ matrix.node }} and ${{ matrix.os }}'
     needs: build
     if: github.repository == 'jorisre/jest-wake-lock-mock' && (github.ref =='refs/heads/main')
     runs-on: ubuntu-latest
