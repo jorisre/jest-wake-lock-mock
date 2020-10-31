@@ -33,7 +33,8 @@
   "peerDependencies": {},
   "husky": {
     "hooks": {
-      "pre-commit": "tsdx lint"
+      "pre-commit": "tsdx lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "prettier": {
@@ -43,13 +44,15 @@
     "trailingComma": "es5"
   },
   "devDependencies": {
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@types/dom-screen-wake-lock": "^1.0.0",
     "babel-eslint": "^10.1.0",
     "husky": "^4.3.0",
+    "semantic-release": "^17.2.2",
     "ts-jest": "^26.4.3",
     "tsdx": "^0.14.1",
     "tslib": "^2.0.3",
-    "typescript": "^4.0.5",
-    "semantic-release": "^17.2.2"
+    "typescript": "^4.0.5"
   }
 }
