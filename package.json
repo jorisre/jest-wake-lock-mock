@@ -1,0 +1,55 @@
+{
+  "name": "jest-wake-lock-mock",
+  "version": "0.0.0-development",
+  "description": "Mock `navigator.wakeLock` with ease and run your tests using Jest",
+  "author": "Joris",
+  "license": "MIT",
+  "homepage": "https://github.com/jorisre/jest-wake-lock-mock#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jorisre/jest-wake-lock-mock.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jorisre/jest-wake-lock-mock/issues"
+  },
+  "main": "dist/index.js",
+  "module": "dist/jest-wake-lock-mock.esm.js",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
+  },
+  "scripts": {
+    "start": "tsdx watch",
+    "build": "tsdx build",
+    "test": "tsdx test",
+    "lint": "tsdx lint",
+    "prepare": "tsdx build",
+    "semantic-release": "semantic-release"
+  },
+  "peerDependencies": {},
+  "husky": {
+    "hooks": {
+      "pre-commit": "tsdx lint"
+    }
+  },
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "devDependencies": {
+    "@types/dom-screen-wake-lock": "^1.0.0",
+    "babel-eslint": "^10.1.0",
+    "husky": "^4.3.0",
+    "ts-jest": "^26.4.3",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.0.3",
+    "typescript": "^4.0.5",
+    "semantic-release": "^17.2.2"
+  }
+}
