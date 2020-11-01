@@ -4,7 +4,8 @@ type ReleaseEventName = typeof RELEASE_EVENT_NAME;
 /**
  * Create a `navigator.wakeLock.request`
  * @class
- * @classdesc Aims to reproduce native wakeLock API in Jest environment
+ * @classdesc Aims to reproduce Screen Wake Lock API in Jest environment
+ * @link https://w3c.github.io/screen-wake-lock/
  */
 export class WakeLockRequest {
   #released: boolean;
