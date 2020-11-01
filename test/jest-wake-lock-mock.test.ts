@@ -11,12 +11,13 @@ const requestWakeLock = async (onRelease: EventListener) => {
   }
 };
 
-test('wakelock request then release with success', async () => {
+test('wakeLock handles request then release with success', async () => {
   const handleRelease = jest.fn();
   const { wakeLock, error } = await requestWakeLock(handleRelease);
 
   expect(error).not.toBeDefined();
   expect(wakeLock).toBeDefined();
+  expect(handleRelease).not.toHaveBeenCalled();
 
   if (wakeLock) {
     const onReleaseSpy = jest.spyOn(wakeLock, 'onrelease');
@@ -25,6 +26,7 @@ test('wakelock request then release with success', async () => {
     expect(wakeLock?.released).toBe(false);
 
     wakeLock?.release();
+    expect(wakeLock?.type).toEqual('screen');
     expect(wakeLock?.released).toBe(true);
     expect(handleRelease).toHaveBeenCalledWith(expect.any(Event));
     expect(onReleaseSpy).toHaveBeenCalledWith(expect.any(Event));
@@ -34,7 +36,7 @@ test('wakelock request then release with success', async () => {
   }
 });
 
-test('wakelock request and throw an error', async () => {
+test('wakeLock handles request and throw an error', async () => {
   const wakeLockError = new Error('wakeLock error');
   const handleRelease = jest.fn();
   mocked(navigator.wakeLock.request).mockRejectedValueOnce(wakeLockError);
