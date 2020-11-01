@@ -7,8 +7,8 @@ module.exports = {
         preset: 'conventionalcommits',
       },
     ],
+    '@semantic-release/npm',
     '@semantic-release/git',
     '@semantic-release/github',
-    '@semantic-release/npm',
   ],
 };
