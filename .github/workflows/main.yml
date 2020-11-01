@@ -33,6 +33,11 @@ jobs:
         run: yarn lint
       - name: Test
         run: yarn test --ci --coverage --maxWorkers=2
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+
   publish-module:
     name: 'Publish Module to NPM on Node ${{ matrix.node }} and ${{ matrix.os }}'
     needs: build
