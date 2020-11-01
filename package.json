@@ -12,6 +12,15 @@
   "bugs": {
     "url": "https://github.com/jorisre/jest-wake-lock-mock/issues"
   },
+  "keywords": [
+    "wakeLock",
+    "wake-lock",
+    "jest",
+    "mock",
+    "test",
+    "Screen Wake Lock",
+    "navigator.wakeLock"
+  ],
   "main": "dist/index.js",
   "module": "dist/jest-wake-lock-mock.esm.js",
   "typings": "dist/index.d.ts",
