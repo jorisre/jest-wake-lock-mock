@@ -10,7 +10,7 @@
   </a>
 </p>
 
-> Mock `navigator.wakeLock` with ease and run your tests using Jest
+> Mock [Screen Wake Lock API](https://w3c.github.io/screen-wake-lock/) _(`navigator.wakeLock`)_ with ease and run your tests using Jest
 
 ### 🏠 [Homepage](https://github.com/jorisre/jest-wake-lock-mock#readme)
 
