@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to jest-wake-lock-mock 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000&style=for-the-badge" />
+  <img alt="npm" src="https://img.shields.io/npm/v/jest-wake-lock-mock?style=for-the-badge">
   <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/jorisre/jest-wake-lock-mock/CI?style=for-the-badge">
   <a href="https://github.com/jorisre/jest-wake-lock-mock/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/github/license/jorisre/jest-wake-lock-mock?style=for-the-badge" />
