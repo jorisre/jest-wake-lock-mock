@@ -40,7 +40,7 @@ In your `jest.config.js` or `package.json` under `jest` section create a [`setup
 
 ## Tests
 
-Write your tests with confidence using same `wakeLock` api than in a browser.
+Write your tests with confidence using the same `wakeLock` api as in the browser.
 
 **Example** ([More](https://github.com/jorisre/jest-wake-lock-mock/blob/master/test/jest-wake-lock-mock.test.ts)):
 
