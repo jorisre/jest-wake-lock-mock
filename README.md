@@ -2,6 +2,7 @@
 <p>
   <img alt="npm" src="https://img.shields.io/npm/v/jest-wake-lock-mock?style=for-the-badge">
   <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/jorisre/jest-wake-lock-mock/CI?style=for-the-badge">
+  <img alt="Codecov" src="https://img.shields.io/codecov/c/github/jorisre/jest-wake-lock-mock?style=for-the-badge&token=D75F3R5OEO">
   <a href="https://github.com/jorisre/jest-wake-lock-mock/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/github/license/jorisre/jest-wake-lock-mock?style=for-the-badge" />
   </a>
