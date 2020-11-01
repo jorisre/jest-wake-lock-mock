@@ -1,6 +1,6 @@
 {
   "name": "jest-wake-lock-mock",
-  "version": "0.0.0-development",
+  "version": "1.0.0",
   "description": "Mock `navigator.wakeLock` with ease and run your tests using Jest",
   "author": "Joris",
   "license": "MIT",
