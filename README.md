@@ -69,7 +69,7 @@ test('wakeLock request with success', async () => {
 
 👤 **Joris**
 
-- Twitter: [@Jor1s\_](https://twitter.com/Jor1s_)
+- Twitter: [@\_jorisre](https://twitter.com/_jorisre)
 - Github: [@jorisre](https://github.com/jorisre)
 
 ## 🤝 Contributing
