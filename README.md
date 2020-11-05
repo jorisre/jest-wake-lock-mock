@@ -6,8 +6,8 @@
   <a href="https://github.com/jorisre/jest-wake-lock-mock/blob/master/LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/github/license/jorisre/jest-wake-lock-mock?style=for-the-badge" />
   </a>
-  <a href="https://twitter.com/Jor1s_" target="_blank">
-    <img alt="Twitter: Jor1s_" src="https://img.shields.io/twitter/follow/Jor1s_.svg?style=for-the-badge" />
+  <a href="https://twitter.com/_jorisre" target="_blank">
+    <img alt="Twitter: _jorisre" src="https://img.shields.io/twitter/follow/_jorisre.svg?style=for-the-badge" />
   </a>
 </p>
 
