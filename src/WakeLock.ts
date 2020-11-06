@@ -28,7 +28,7 @@ export class WakeLockSentinel {
     this.#wakeLockEventTarget.removeEventListener(eventName, callback, options);
   }
 
-  release() {
+  async release() {
     this.#released = true;
     this.onrelease(this.#releaseEvent);
     this.#wakeLockEventTarget.dispatchEvent(this.#releaseEvent);
