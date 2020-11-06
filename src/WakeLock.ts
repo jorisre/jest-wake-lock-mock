@@ -7,7 +7,7 @@ type ReleaseEventName = typeof RELEASE_EVENT_NAME;
  * @classdesc Aims to reproduce Screen Wake Lock API in Jest environment
  * @link https://w3c.github.io/screen-wake-lock/
  */
-export class WakeLockRequest {
+export class WakeLockSentinel {
   #released: boolean;
   #type: WakeLockType;
   #releaseEvent: Event;
