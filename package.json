@@ -1,6 +1,6 @@
 {
   "name": "jest-wake-lock-mock",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mock Screen Wake Lock API `navigator.wakeLock` with ease and run your tests using Jest",
   "author": {
     "name": "Joris",
