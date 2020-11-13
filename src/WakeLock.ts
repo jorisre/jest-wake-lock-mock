@@ -10,12 +10,14 @@ type ReleaseEventName = typeof RELEASE_EVENT_NAME;
 export class WakeLockSentinel {
   #released: boolean;
   #type: WakeLockType;
+  #onrelease: EventListener | undefined;
   #releaseEvent: Event;
   #wakeLockEventTarget: EventTarget;
 
   constructor(type: WakeLockType) {
     this.#released = false;
     this.#type = type;
+    this.#onrelease = undefined;
     this.#releaseEvent = new Event(RELEASE_EVENT_NAME);
     this.#wakeLockEventTarget = new EventTarget();
   }
@@ -30,11 +32,14 @@ export class WakeLockSentinel {
 
   async release() {
     this.#released = true;
-    this.onrelease(this.#releaseEvent);
     this.#wakeLockEventTarget.dispatchEvent(this.#releaseEvent);
   }
 
-  onrelease(_event: Event) {}
+  set onrelease(listener: EventListener) {
+    if (this.#onrelease) this.removeEventListener('release', this.#onrelease);
+    this.addEventListener('release', listener);
+    this.#onrelease = listener;
+  }
 
   get released() {
     return this.#released;

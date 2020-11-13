@@ -20,8 +20,6 @@ test('wakeLock handles request then release with success', async () => {
   expect(handleRelease).not.toHaveBeenCalled();
 
   if (wakeLock) {
-    const onReleaseSpy = jest.spyOn(wakeLock, 'onrelease');
-
     expect(wakeLock?.type).toEqual('screen');
     expect(wakeLock?.released).toBe(false);
 
@@ -30,7 +28,6 @@ test('wakeLock handles request then release with success', async () => {
     expect(wakeLock?.type).toEqual('screen');
     expect(wakeLock?.released).toBe(true);
     expect(handleRelease).toHaveBeenCalledWith(expect.any(Event));
-    expect(onReleaseSpy).toHaveBeenCalledWith(expect.any(Event));
 
     wakeLock?.removeEventListener('release', handleRelease);
     expect(handleRelease).toHaveBeenLastCalledWith(expect.any(Event));
@@ -59,8 +56,6 @@ test('wakeLock handles request then release multiple times', async () => {
   expect(firstHandleRelease).not.toHaveBeenCalled();
 
   if (wakeLock) {
-    const onReleaseSpy = jest.spyOn(wakeLock, 'onrelease');
-
     expect(wakeLock?.type).toEqual('screen');
     expect(wakeLock?.released).toBe(false);
 
@@ -69,7 +64,6 @@ test('wakeLock handles request then release multiple times', async () => {
     expect(wakeLock?.type).toEqual('screen');
     expect(wakeLock?.released).toBe(true);
     expect(firstHandleRelease).toHaveBeenCalledWith(expect.any(Event));
-    expect(onReleaseSpy).toHaveBeenCalledWith(expect.any(Event));
 
     wakeLock?.removeEventListener('release', firstHandleRelease);
     expect(firstHandleRelease).toHaveBeenLastCalledWith(expect.any(Event));
@@ -86,8 +80,6 @@ test('wakeLock handles request then release multiple times', async () => {
   expect(ndHandleRelease).not.toHaveBeenCalled();
 
   if (ndWakeLock) {
-    const onReleaseSpy = jest.spyOn(ndWakeLock, 'onrelease');
-
     expect(ndWakeLock?.type).toEqual('screen');
     expect(ndWakeLock?.released).toBe(false);
 
@@ -96,9 +88,34 @@ test('wakeLock handles request then release multiple times', async () => {
     expect(ndWakeLock?.type).toEqual('screen');
     expect(ndWakeLock?.released).toBe(true);
     expect(ndHandleRelease).toHaveBeenCalledWith(expect.any(Event));
-    expect(onReleaseSpy).toHaveBeenCalledWith(expect.any(Event));
 
     ndWakeLock?.removeEventListener('release', ndHandleRelease);
     expect(ndHandleRelease).toHaveBeenLastCalledWith(expect.any(Event));
   }
 });
+
+test('wakeLock calls only the last defined "onrelease" attribute', async () => {
+  const handleRelease = jest.fn();
+  const onReleaseAttributeOne = jest.fn();
+  const onReleaseAttributeTwo = jest.fn();
+  const onReleaseAttributeThree = jest.fn();
+  const { wakeLock, error } = await requestWakeLock(handleRelease);
+
+  expect(error).not.toBeDefined();
+  expect(wakeLock).toBeDefined();
+  expect(handleRelease).not.toHaveBeenCalled();
+
+  if (wakeLock) {
+    // Assign the onrelease attribute several times
+    wakeLock.onrelease = onReleaseAttributeOne;
+    wakeLock.onrelease = onReleaseAttributeTwo;
+    wakeLock.onrelease = onReleaseAttributeThree;
+
+    // Trigger wakelock release
+    await wakeLock.release();
+    expect(handleRelease).toHaveBeenCalledWith(expect.any(Event));
+    expect(onReleaseAttributeOne).not.toHaveBeenCalled();
+    expect(onReleaseAttributeTwo).not.toHaveBeenCalled();
+    expect(onReleaseAttributeThree).toHaveBeenCalledWith(expect.any(Event));
+  }
+})
